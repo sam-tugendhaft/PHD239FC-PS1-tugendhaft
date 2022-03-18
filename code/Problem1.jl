@@ -11,11 +11,14 @@ T_new = T-100;
 P = C/r * (1-1/(1+r)^T_new);
 
 # Part c 
+Period = 10; # year of interest ;)
+N = 12; # Number of payments per year.
+
 interest = zeros(T,1);
-Principal = FV;
+global Princ = FV;
 for t in 1:T
-    interest[t] = Principal*r;
-    Principal = Principal - C + interest[t];
+    interest[t] = Princ*r;
+    global Princ = Princ - C + interest[t];
 end
 
-Total_interest_year10 = sum(interest[109:120]);
+Total_interest_year10 = sum(interest[(Period-1)*N+1:Period*N]);
